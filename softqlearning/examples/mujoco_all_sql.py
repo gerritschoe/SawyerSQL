@@ -5,7 +5,6 @@ from rllab.envs.mujoco.swimmer_env import SwimmerEnv
 from rllab.envs.mujoco.ant_env import AntEnv
 from rllab.envs.mujoco.humanoid_env import HumanoidEnv
 from rllab.envs.mujoco.sawyer_test_env_new import SawyerTestEnv
-from rllab.envs.mujoco.arm3d_disc_env import Arm3dDiscEnv
 from rllab.misc.instrument import VariantGenerator
 
 from softqlearning.misc.instrument import run_sql_experiment
