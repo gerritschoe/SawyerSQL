@@ -36,11 +36,11 @@ Choose “<installation_path_of_your_choice>” = “~/projectThesis”.
 After creating conda environment:   % ignore numpy update message 
 Test example experiments: 
 
- cd ~/projectThesis/rllab
- export PYTHONPATH=$(pwd):${PYTHONPATH}
-cd ..
-cd softqlearning
-source activate sql
+ cd ~/projectThesis/rllab   
+ export PYTHONPATH=$(pwd):${PYTHONPATH}  
+cd ..  
+cd softqlearning  
+source activate sql  
 
 Run swimmer example for 1 minute to test installation (edit log_dir):
 python ./examples/mujoco_all_sql.py --env=swimmer --log_dir="/home/gerrit/projectThesis/data/swimmer-experiment"
