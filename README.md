@@ -37,13 +37,9 @@ After creating conda environment:   % ignore numpy update message
 Test example experiments: 
 
  cd ~/projectThesis/rllab
- 
-export PYTHONPATH=$(pwd):${PYTHONPATH}
-
+ export PYTHONPATH=$(pwd):${PYTHONPATH}
 cd ..
-
 cd softqlearning
-
 source activate sql
 
 Run swimmer example for 1 minute to test installation (edit log_dir):
