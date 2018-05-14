@@ -13,14 +13,6 @@
         <mesh name="l4" file="l4.stl" />
         <mesh name="l5" file="l5.stl" />
         <mesh name="l6" file="l6.stl" />
-        <!-- SIEMENS GEARS MESHES:-->
-        <mesh name="base_plate" file="base_plate.stl" scale="0.04 0.04 0.04" />
-        <mesh name="compound_gear" file="compound_gear.stl" scale="0.15 0.15 0.15" /> <!-- bigger hole -->
-        <mesh name="gear1" file="gear1.stl" scale="0.24 0.24 0.24" />
-        <mesh name="gear2" file="gear2.stl" scale="0.04 0.04 0.04" />
-        <mesh name="gear2_1" file="gear2_1.stl" scale="0.04 0.04 0.04" />
-        <mesh name="shaft1" file="shaft1.stl" scale="0.04 0.04 0.04" />
-        <mesh name="shaft2" file="shaft2.stl" scale="0.04 0.04 0.04" />
     </asset>
 
     <default>
@@ -49,7 +41,7 @@
     <worldbody>
         <light directional="true" cutoff="40" exponent="10" diffuse=".4 .4 .4" specular=".7 .7 .7" pos="0 0 1.5" dir="0 0 -1"/>
 
-        <geom name="tableTop" type="box" pos="0.65663183  0.16704036  -0.16950524" size="0.35 0.4 0.01" rgba=".6 .6 .5 1" contype="1" conaffinity="1"/>
+        <geom name="tableTop" type="plane" pos="0 0.6 0" size="0.4 0.2 0.5" rgba=".6 .6 .5 1" contype="1" conaffinity="1"/>
 
         <body name="base" pos="0 0 0">
             <site name="basesite" pos="0 0 0" size="0.01" />
@@ -98,7 +90,7 @@
                     <body name="right_torso_itb" pos="-0.055 0 0.22" quat="0.707107 0 -0.707107 0">
                         <inertial pos="0 0 0" mass="0.0001" diaginertia="1e-08 1e-08 1e-08" />
                     </body>
-                    <body name="right_l1" pos="0.081 0.05 0.237" quat="0.6532815 -0.6532815 0.2705981 0.2705981"> <!-- quat="0.5 -0.5 0.5 0.5"> before change-->
+                    <body name="right_l1" pos="0.081 0.05 0.237" quat="0.5 -0.5 0.5 0.5">
                         <inertial pos="-0.0030849 -0.026811 0.092521" quat="0.424888 0.891987 0.132364 -0.0794296" mass="4.505" diaginertia="0.0224339 0.0221624 0.0097097" />
                         <joint name="right_j1" pos="0 0 0" axis="0 0 1" limited="true" range="-3.8095 2.2736" damping="10"/>
                         <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.5 0.1 0.1 1" mesh="l1" />
@@ -108,7 +100,7 @@
                             <joint name="right_j2" pos="0 0 0" axis="0 0 1" limited="true" range="-3.0426 3.0426" damping="10"/>
                             <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.5 0.1 0.1 1" mesh="l2" />
                             <geom size="0.06 0.17" pos="0 0 0.08" type="cylinder" rgba="0.5 0.1 0.1 0" />
-                            <body name="right_l3" pos="0 -0.042 0.26" quat="0.5 -0.5 0.5 0.5"> <!-- quat="0.707107 -0.707107 0 0"> before change-->
+                            <body name="right_l3" pos="0 -0.042 0.26" quat="0.707107 -0.707107 0 0">
                                 <site name="armsite" pos="0 0 0" size="0.01" />
                                 <inertial pos="-0.0048135 -0.0281 -0.084154" quat="0.902999 0.385391 -0.0880901 0.168247" mass="2.5097" diaginertia="0.0102404 0.0096997 0.00369622" />
                                 <joint name="right_j3" pos="0 0 0" axis="0 0 1" limited="true" range="-3.0439 3.0439" damping="10"/>
@@ -122,7 +114,7 @@
                                     <body name="right_arm_itb" pos="-0.055 0 0.075" quat="0.707107 0 -0.707107 0">
                                         <inertial pos="0 0 0" mass="0.0001" diaginertia="1e-08 1e-08 1e-08" />
                                     </body>
-                                    <body name="right_l5" pos="0 0.031 0.275" quat="0.6532815 -0.6532815 0.2705981 0.2705981"> <!-- quat="0.707107 -0.707107 0 0"> before change-->
+                                    <body name="right_l5" pos="0 0.031 0.275" quat="0.707107 -0.707107 0 0">
                                         <inertial pos="0.0061133 -0.023697 0.076416" quat="0.404076 0.9135 0.0473125 0.00158335" mass="1.5625" diaginertia="0.00474131 0.00422857 0.00190672" />
                                         <joint name="right_j5" pos="0 0 0" axis="0 0 1" limited="true" range="-2.9761 2.9761" damping="10"/>
                                         <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.5 0.1 0.1 1" mesh="l5" />
@@ -144,44 +136,23 @@
 
 <!--  ================= BEGIN GRIPPER ================= /-->
                                                 <body name="claw" pos="0 0 0" quat="-1 0 1 0">
-                                                    <geom class="1" name="Geomclaw" type="capsule" fromto="0 .02 0 0 -.02 0" size="0.01" contype="0" conaffinity="0"/>  <!--excluded the grippers from contact dynamics-->
-                                                                                                                                                                    <!--set contype and conaffinity back to 1 for working grippers--> 
+                                                    <geom class="1" name="Geomclaw" type="capsule" fromto="0 .02 0 0 -.02 0" size="0.01" />
+
                                                     <body name="rightclaw" pos=".01 -.02 0" >
-                                                        <geom name="rightclaw_it" class="1" type="capsule" fromto="0 0 0 .05 0.0 0.0"   size="0.005" contype="0" conaffinity="0" /> 
+                                                        <geom name="rightclaw_it" class="1" type="capsule" fromto="0 0 0 .05 0.0 0.0"   size="0.005" />
                                                         <joint name="rc_close" type="slide" pos="0 0 0" axis="0 1 0" range="0 0.03" user="008"/>
                                                     </body>
 
                                                     <body name="leftclaw" pos=".01 .02 0">
-                                                        <geom name="leftclaw_it" class="1" type="capsule" fromto="0 0 0 .05 0.0 0.0"    size="0.005" contype="0" conaffinity="0" />
+                                                        <geom name="leftclaw_it" class="1" type="capsule" fromto="0 0 0 .05 0.0 0.0"    size="0.005" />
                                                         <site name="endeffector" pos="0 0 0" size="0.01" />
                                                     </body>
                                                 </body>
 <!--  ================= END GRIPPER ================= /-->
-<!--  ================= BEGIN DISC ================= /-->
-
-                                                <body name="r_gripper_tool_frame" pos="0 0 0.11">
-                                                    <site name="disc_center" pos="0 0 0" size="0.01" rgba='0 1 0 1' /> 
-                                                    <!--correspond to the disk-->
-                                                    <!--  Importing only one STL file of the Gear does not work because Mujoco is using the convex hull for contact analysis
-                                                    <body name="tool" pos="0 0 0">
-                                                        <geom type="mesh" contype="1" conaffinity="1" group="1" rgba="1.0 1.0 1.0 1.0" quat="0 1.0 0 0" mesh="compound_gear" />
-                                                    </body>
-                                                    -->
-
-                                                    <body name="tool" pos="0 0 0">
-                                                        <geom name="wc1" pos="0.0915 0 0" rgba="0.2 0.2 0.8 1" type="box" size="0.0585 0.15 0.025" contype="1" conaffinity="1" />
-                                                        <geom name="wc2" pos="-0.0915 0 0" rgba="0.2 0.2 0.8 1" type="box" size="0.0585 0.15 0.025" contype="1" conaffinity="1" />
-                                                        <geom name="wc3" pos="0.0 0.0915 0" rgba="0.2 0.2 0.8 1" type="box" size="0.033 0.0585 0.025" contype="1" conaffinity="1" />
-                                                        <geom name="wc4" pos="0.0 -0.0915 0" rgba="0.2 0.2 0.8 1" type="box" size="0.033 0.0585 0.025" contype="1" conaffinity="1" />
-                                                    </body>
-
-                                                </body>
-                                                
-<!--  ================= END DISC ================= /-->
 
                                             </body>
                                         </body>
-                                    </body>s
+                                    </body>
                                     <body name="right_l4_2" pos="0 0 0">
                                         <inertial pos="1e-08 1e-08 1e-08" quat="0.820473 0.339851 -0.17592 0.424708" mass="1e-08" diaginertia="1e-08 1e-08 1e-08" />
                                         <geom size="0.06" pos="0 0.01 0.26" rgba="0.2 0.2 0.2 0"/>
@@ -202,26 +173,13 @@
             </body>
         </body>
 
-        <!-- Base plate has a concave geometry and assembling a gear will only work if we split this base plate and the gear in multiple concave objects. Look up V-HACD--> 
-        <!-- -20cm: pos="0.65663183  0.16704036  -0.21950524"-->
-        <!--
-        <body name="base_plate" pos="0.65663183  0.16704036  -0.21950524"> 
-            <geom type="mesh" contype="1" conaffinity="1" group="1" rgba="1.0 1.0 1.0 1.0" quat="1.0 0 0 0" mesh="base_plate" /> 
+        <body mocap="true" name="mocap" pos="0.2369680365278436 0.7377722688452103 0.30233579064225752">
+            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="1.0 1.0 1.0 0.5" size="0.02 0.02 0.02" type="box"></geom>
         </body>
-        -->
-        <!-- TARGET: -->
-        <body mocap="true" name="target" pos="0.65663183  0.16704036  -0.08950524"> <!-- -20cm:_pos="0.65663183  0.16704036  -0.13950524"-->
-            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 1 0 1" size="0.03" type="sphere"/>
-        </body>
-
-         <body name="peg" pos="0.65663183  0.16704036  -0.16950524">   <!-- Match size of SIEMENS Base Plate original: size="0.028"-->
-            <!--huge density to prevent arm from moving peg-->
-            <geom name="peg_geom" rgba="0.941176 0.972549 1 1" type="cylinder" fromto="0 0 0 0 0 0.164" size="0.028" density="2000000" contype="1" conaffinity="1" /> 
-        </body>
-<!--  ================= DELETED UNUSED JOINTS/BOXES ================= 
 
         <body name="block" pos="0 0.7 0.1">
-            <joint name="blockjoint" type="free" limited='false' damping="0" armature="0" /> 
+            <joint name="blockjoint" type="free" limited='false' damping="0" armature="0" />
+            <!-- <inertial pos="0 0 0" mass="0.1" diaginertia="0.1 0.1 0.1"/> -->
             <geom name="blockbox" type="box" pos="0 0 0" size="0.02 0.02 0.02" rgba=".1 .1 .9 1" contype="1" conaffinity="1"/>
             <site name="block" pos="0 0 0" size="0.01" />
         </body>
@@ -231,8 +189,8 @@
             <geom name="goalbox" type="sphere" pos="0 0 0" size="0.02" rgba=".9 .1 .1 1" contype="0" conaffinity="0"/>
             <site name="goal" pos="0 0 0" size="0.01" />
         </body>
--->
-    </worldbody>s
+
+    </worldbody>
 
     <actuator>
         <motor joint="right_j0" ctrlrange="-100.0 100.0" ctrllimited="false"/>
@@ -242,8 +200,7 @@
         <motor joint="right_j4" ctrlrange="-100.0 100.0" ctrllimited="false"/>
         <motor joint="right_j5" ctrlrange="-100.0 100.0" ctrllimited="false"/>
         <motor joint="right_j6" ctrlrange="-100.0 100.0" ctrllimited="false"/>
-<!-- Gripper not used with gears    -->
-<!--    <motor gear="1" joint="rc_close" name="slide"/>  --> 
+        <motor gear="1" joint="rc_close" name="slide"/>
     </actuator>
 
 </mujoco>
