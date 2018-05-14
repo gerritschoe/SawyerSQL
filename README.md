@@ -42,15 +42,15 @@ cd ..
 cd softqlearning  
 source activate sql  
 
-Run swimmer example for 1 minute to test installation (edit log_dir):
+Run swimmer example for 1 minute to test installation (edit log_dir):  
 python ./examples/mujoco_all_sql.py --env=swimmer --log_dir="/home/gerrit/projectThesis/data/swimmer-experiment"
 Execute this command twice if the reinforcement learning does not start at the first time. 
 
-To visualize swimmer example (edit log_dir): 
+To visualize swimmer example (edit log_dir):  
 python ./scripts/sim_policy.py --max-path-length 1000 --speedup 100 /home/gerrit/projectThesis/data/swimmer-experiment/params.pkl
 
-7. Implemenation of Sawyer model: 
-Download and save all files from rllab/vendor/mujoco_models. These files are named “mesh”, “sawyer_gripper_mocap.xml” and “sawyer_gripper_mocap_unedited.xml”. 
+7. Implemenation of Sawyer model:   
+Download and save all files from rllab/vendor/mujoco_models. These files are named “mesh”, “sawyer_gripper_mocap.xml” and “sawyer_gripper_mocap_unedited.xml”.   
 Copy “mesh” and “sawyer_gripper_mocap.xml” to /home/gerrit/projectThesis/rllab/vendor/mujoco_models
 (edit path if project path is not /home/gerrit/projectThesis/)
 
@@ -61,13 +61,13 @@ Download and save all files from softqlearning/examples. These files are named �
 Copy both files to ~/gerrit/projectThesis/softqlearning/examples  and replace the old version of it. Just the SawyerTestEnv got added, no other changes were made. 
 (edit path if project path is not /home/gerrit/projectThesis/)
 
-9. Run Sawyer experiment:
-cd ~/projectThesis/rllab
-export PYTHONPATH=$(pwd):${PYTHONPATH}
-cd ..
-cd softqlearning
-source activate sql
-python ./examples/mujoco_all_sql.py --env=sawyer --log_dir="/home/gerrit/projectThesis/data/sawyer-experiment"
+9. Run Sawyer experiment:  
+cd ~/projectThesis/rllab  
+export PYTHONPATH=$(pwd):${PYTHONPATH}  
+cd ..  
+cd softqlearning  
+source activate sql  
+python ./examples/mujoco_all_sql.py --env=sawyer --log_dir="/home/gerrit/projectThesis/data/sawyer-experiment"  
 (Keep running for some iterations)
 
 Visualize Sawyer:
@@ -81,8 +81,8 @@ python ./examples/reuse_qf_policy_sawyer.py /home/gerrit/projectThesis/data/sawy
 
 Files get saved in the data folder of softqlearning. From there we can copy them over to our saved files and rename to keep the order of iterations. This way we can keep learning after an interruption. 
 
-To record a mp4 video:
-python ./record_video.py
+To record a mp4 video:  
+python ./record_video.py  
 Video saved to /home/gerrit/projectThesis/rllab/data/video/sawyer
 
 10. This update included:
