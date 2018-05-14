@@ -73,8 +73,11 @@ Visualize Sawyer:
 python ./scripts/sim_policy.py --max-path-length 1000 --speedup 100 /home/gerrit/projectThesis/data/sawyer-experiment/itr_0.pkl
 
 (edit path if project path is not /home/gerrit/projectThesis/)
+
 Reuse existing policy: 
+
 python ./examples/reuse_qf_policy_sawyer.py /home/gerrit/projectThesis/data/sawyer-experiment/itr_0.pkl 
+
 Files get saved in the data folder of softqlearning. From there we can copy them over to our saved files and rename to keep the order of iterations. This way we can keep learning after an interruption. 
 
 To record a mp4 video:
