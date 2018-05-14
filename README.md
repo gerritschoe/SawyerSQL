@@ -33,7 +33,7 @@ https://github.com/haarnoja/softqlearning
 Choose local installation, follow instructions, starting with cloning rllab. 
 Choose “<installation_path_of_your_choice>” = “~/projectThesis”.
 
-after creating conda environment:   % ignore numpy update message 
+After creating conda environment:   % ignore numpy update message 
 Test example experiments: 
  cd ~/projectThesis/rllab
 export PYTHONPATH=$(pwd):${PYTHONPATH}
